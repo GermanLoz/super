@@ -1,0 +1,184 @@
+@media (max-width:1168px){
+.hero-return img{
+    width:290px;
+}
+}
+@media (max-width:1000px){
+.return-busqueda{
+    grid-template-columns: auto auto;
+}
+}
+@media (max-width:710px){
+.cont-title{
+    height:80%;
+    margin-left: -4rem;    
+}
+.cont-title p{
+    margin-left: 6rem;
+    width:45%;
+}
+.titles{
+    font-size:2.5rem;
+}
+}
+@media (max-width:600px){
+/*FORM*/
+.form .button{
+    font-size: 1.7rem;
+    width:70%;
+}
+.form .input{
+    font-size:1.2rem;
+}
+.error{
+    font-size: 1.2rem;
+}
+/* */
+    .cont-title{
+        height:20rem;
+        width:30rem;
+        margin-top:-1rem;
+        margin-left: -3rem;    
+    }
+    .cont-title p{
+        margin-left: 9.5rem;
+        margin-top: 4rem;
+        margin-left: 8rem;
+        width:40%;
+    }
+    .titles{
+        font-size:2rem;
+    }
+    .cont-title button{
+        margin-top: 8.5rem;
+        margin-left: 18rem;
+    }
+}
+@media (max-width:665px){
+/*NAV RESPONSIVE */
+.button-menu{
+    display: block;
+    background: none;
+    border: none;
+    position:absolute;
+    right: 5%;
+    margin-top: 15px;
+    font-size: 2.8rem;
+    color:#fff;
+}
+.cerrar-sesion{
+    position:absolute;
+    top: 8rem;
+    width: 150px;
+    left:50%;
+    margin-left:-75px;
+    z-index: 3;
+}
+.menu-res{
+    text-align: center;
+    animation-name: menuAn;
+    animation-duration: 1s;
+    display:block;
+    position: relative;
+    padding-bottom: 2rem;
+    border-bottom: 4.8rem solid #911010;
+    margin-top: 5rem;
+    background: linear-gradient(to top, #24243e, #302b63, #0f0c29);
+}
+@keyframes menuAn {
+from{
+    transform:translateX(-200%);
+}
+to{
+    transform:translateX(0%);
+}
+}
+.nav{
+    transform:translateX(-200%);
+    position: relative;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #911010;
+    margin-top: 5rem;
+    background: linear-gradient(to top, #24243e, #302b63, #0f0c29);
+}
+.nav ul li{
+    display:block;
+    float:none;
+    text-align: center;
+    margin:0px;
+}
+li {
+    padding-top:25px;
+}
+/*          */
+.return-busqueda{
+    grid-template-columns: auto ;
+}
+.inicio-superHero{
+    width: 250px;
+    left:50%;
+    margin-left: -120px;
+}
+}
+@media (max-width:500px){
+.login-cont{
+    height:50rem;
+    background: url("./img/bg-movil.jpg");
+}
+.block{
+    width:80%;
+    left: 11%;
+}
+.form .input{
+    width: 80%;
+}
+}
+@media (max-width:400px){
+    .cont-title{
+        transform: rotate(96deg);
+        height:15rem;
+        width:18rem;
+        margin-top:-0.3rem;
+        margin-left: 0rem;    
+    }
+    .cont-title p{
+        transform: rotate(-96deg);
+        margin-top: 2.4rem;
+        margin-left: 2rem;
+        width:70%;
+    }
+    .titles{
+        font-size:1.7rem;
+    }
+    .cont-title button{
+       transform: rotate(-96deg);
+        margin-top: 2.1rem;
+        left:50%;
+        margin-left: 20rem;
+    }
+.buscar{
+    padding: 5px 15px;
+}
+.team-button{
+    font-size:1.3rem;
+    width: 220px;
+    margin-left: -110px;
+    left: 50%;
+}
+}
+@media (max-width:330px){
+.team-inicio p{
+    font-size: 4rem;
+}
+.hero-return img{
+    width:250px;
+}
+}
+@media (max-width:290px){
+.hero-return img{
+    width: 240px;
+}
+.hero-return{
+    padding: 12px 10px;
+}
+}

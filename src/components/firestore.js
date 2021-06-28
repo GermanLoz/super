@@ -1,8 +1,7 @@
 import firebase from 'firebase/app'
-import 'firebase/auth'
+import 'firebase/firestore'
 import { fire } from '../services/init.jsx'
 
+const db = fire.firestore()
 
-const auth = fire.auth()
-
-export { auth }
+export { db }

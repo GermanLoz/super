@@ -3,6 +3,29 @@
   padding: 0px;
   box-sizing: border-box;
 }
+.null-hero{
+  font-size: 2rem;
+  padding-bottom: 40rem;
+  font-family: 'Ubuntu', sans-serif;
+  color: #fff;
+}
+.message{
+  position: fixed;
+  margin-top: 6rem;
+  border-radius: 8px;
+  color: #fff;
+  top: 0;
+  font-size:1.5rem;
+  text-align: center;
+  z-index: 10000;
+  left: 5%;
+  width: 90%;
+  background:#1ebd10;
+  padding:15px 0px;
+}
+.button-menu{
+  display:none;
+}
 .cont-nav{
   position: fixed;
   width:100%;
@@ -12,7 +35,7 @@
   background: -webkit-linear-gradient(to right, #EA384D, #D31027);
   background: linear-gradient(to right, #EA384D, #D31027); 
 }
-nav ul li{
+.nav ul li{
   display: inline-block;
   float: left;
   margin: 1.6rem;
@@ -44,6 +67,7 @@ li .link{
 }
 .login-cont{
   padding-top: 5rem;
+  overflow-y: hidden;
   background: url("./img/bg.jpg");
   background-size: cover;
   height: 40rem;
@@ -111,7 +135,7 @@ li .link{
 }
 .cont-title{
   background:#1e1e35d0;
-  width:60%;
+  width:45rem;
   transform: rotate(102deg);
   height:100%; 
 }
@@ -121,7 +145,7 @@ li .link{
   width:60%;
   display:flex;
   margin-left: 5%;
-  margin-top: 12%;
+  margin-top: 15%;
 }
 .cont-title button{
   font-size: 1.5rem;
@@ -167,8 +191,9 @@ li .link{
   background: #485563; /* fallback for old browsers */
 }
 .cerrar-sesion{
+  text-shadow: -3px -1px 0px #807979;
   float:right;
-  font-family: 'Marvel', sans-serif;
+  font-family: 'Bebas Neue', cursive;
   font-size: 1.4rem;
   outline: none;
   color: #fff;
@@ -176,7 +201,7 @@ li .link{
   background: -webkit-linear-gradient(to top, #24243e, #302b63, #0f0c29); 
   background: linear-gradient(to top, #24243e, #302b63, #0f0c29);
   font-weight: 500;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 8px 13px;
   margin: 15px;
 }
@@ -185,10 +210,10 @@ li .link{
 
 .super-hero{
   height:32rem;
-  background: url('./img/bgsuper.jpg');
+  background: url('./img/bg-super.jpg');
   background-attachment: fixed;
   background-size: cover;
-  border-bottom: #D31027 2px solid;
+  border-bottom: #641210 2px solid;
 }
 .super-hero::after{
   content:' ';
@@ -205,7 +230,7 @@ li .link{
   z-index: 1;
   width: 500px;
   left: 50%;
-  margin-top: 15%;
+  margin-top: 15rem;
   margin-left: -250px;
 }
 .inicio-superHero p {
@@ -217,7 +242,7 @@ li .link{
 .team{
   padding-bottom: 15rem;
   height:auto;
-  background:#000000;
+  background: linear-gradient(to right, #2F0743, #41295a);
 }
 .team-super{
   padding-top:10rem ;
@@ -227,14 +252,14 @@ li .link{
   font-family: 'Marvel', sans-serif;
 }
 .buscar{
-  background: linear-gradient(to bottom, #2a0845, #6441A5);
+  background: linear-gradient(to bottom, #520a0a, #812525);
   position:absolute;
   left: 50%;
   color: #fff;
   border: none;
   outline:none;
   padding: 5px 20px;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 1.4rem;
   margin-left: -125px;
   width: 250px;
@@ -296,4 +321,79 @@ li .link{
   background: linear-gradient(to right, #EA384D, #D31027); 
   padding: 2rem;
   padding: 16px 10px 17px;
+}
+
+/* INICIO TEAM  */
+.team-inicio{
+  position:absolute;
+  width: 100%;
+  margin-top: 5rem;
+  height:100%;
+  background:url("./img/bg-team.jpg");
+  background-size: cover;
+}
+.team-inicio:before {
+	content:'';
+	position: absolute;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.692);
+}
+.team-inicio p{
+  text-shadow: 8px 15px 8px #470b0bd0;
+  top: 15%;
+  position:absolute;
+  color: #fff;
+  left: 5%;
+  font-size: 5rem;
+  font-family: 'Anton', sans-serif;
+  font-style: italic;
+}
+.team-button{
+  border: none;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  position: absolute;
+  top: 70%;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding:15px 0px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to top,#7d09b3, #8805f3, #7b0ee0); 
+}
+
+/*  MODAL   */
+.modal{
+  animation-duration: 2s;
+  animation-name: up;
+  position: absolute;
+  top: 20%;
+  z-index:3;
+  height:auto;
+  background: linear-gradient(to right, #2a0845, #6441A5);
+  width:100%;
+}
+.down-modal{
+  color: #fff;
+  background:#8f1717;
+  font-size: 2rem;
+  padding: 10px 17px;
+  border:none;
+  float:right;
+  margin: 20px; 
+  border-radius: 50%;
+}
+@keyframes up{
+  from{
+    transform:translateY(-130%);
+  }
+  to{
+    transform:translateY(0%);
+  }
 }

@@ -9,7 +9,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "firebase": "^8.6.1",
+    "firebase": "^4.12.0",
     "firebase-admin": "^9.8.0",
     "firebase-tools": "^9.11.0",
     "formik": "^2.2.6",

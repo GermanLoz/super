@@ -24,7 +24,7 @@ return(
          else if (
           !/^[a-z]+[A-Z]+[1-9]{2,40}$/i.test(values.password)
         ) {
-            errors.password = 'Password null, must include 2 letters/';
+            errors.password = 'La contraseña tiene que comenzar con letras y terminar con 2 numeros';
         }
          return errors;
        }}
@@ -33,6 +33,7 @@ return(
          auth.signInWithEmailAndPassword(values.email,values.password)
         .then( (e)=> {
               historial.push('/SuperHero')
+              console.log(e)
            })
          .catch((error)=>{
            if(error.code == 'auth/wrong-password'){
