@@ -8,11 +8,6 @@ import SuperHero from './superHero'
 import Team from './team.jsx'
 
 function App() {
-  /*app.use(function(req,res,next){
-    res.headers["Access-Control-Allow-Origin", "*"]
-    res.headers["Access-Control-Allow-Headers", "Origin, X-Resquested-With, Content-Type,Accept"]
-    next()
-  })*/
   return (
    <div>
       <Router>

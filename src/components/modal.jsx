@@ -4,7 +4,7 @@ import Card from './card.jsx'
 import Delet from './delete'
 
 export default function Modal(Props) {
-    const{estado, setUp, card, user, setCards} = Props
+    const{estado, setUp, card, user, setDet} = Props
     const[styleModal, setStyleModal] = useState('none')
     const [ides, setIdes] = useState([])
     const [delet, setDelet] = useState('')
@@ -13,15 +13,11 @@ export default function Modal(Props) {
     const [response, setResponse] = useState([])
     const [message, setMesagge] = useState('')
     const [messageClass, setMesaggeClass] = useState('none')
-
-    console.log(actualizar)
-
-
-
-
     const [actualizarId, setIdActulizar] = useState([])
+    const [dataDetalle, setDataDetalle] = useState([])
     const [dataAcutlizada, setDataActulizada] = useState([])
-    console.log(dataAcutlizada)
+    console.log(heroData)
+
     if(estado == true && styleModal ==='none'){
         setStyleModal('modal')
     }
@@ -45,6 +41,7 @@ useEffect(()=>{
     const {id} = item
     return {heroId, id}
 })
+
 if(idesAct){ 
     setIdActulizar([...idesAct])
 }
@@ -52,7 +49,6 @@ if(idesAct){
 
 useEffect(()=>{
     if(actualizarId.length != 0){ 
-      console.log(actualizarId)
         actualizarId.map(item =>(
         ModalData({item:item.heroId, docid:item.id})  
         .then(res =>(
@@ -86,8 +82,8 @@ useEffect(()=>{
     return {heroId, id}
 })
 if(idesHero){
-setIdes(...ides,idesHero)
-}
+    setIdes(...ides,idesHero)
+    }
 },[card])
 
 useEffect(()=>{
@@ -100,7 +96,14 @@ useEffect(()=>{
             ))
         }
 },[ides])
+
+useEffect(()=>{
+    setDet(dataDetalle)
+},[dataDetalle])
+
+
     return (
+        <>
         <div className={styleModal} >
             <div className={messageClass}>{message}</div>
             <button
@@ -109,14 +112,18 @@ useEffect(()=>{
                 <i class="fas fa-times"></i>
             </button>
             <div className="return-busqueda">
-          {
+            {
             heroData ?
             heroData.map( heroData =>{
-                console.log(heroData)
                 if(Array.isArray(heroData)){
                     return " "
                 }else{ 
-               return <Card 
+               return <Card
+                       setDataDetalle={setDataDetalle}
+                       biography={heroData.biography}
+                       appearance={heroData.appearance}
+                       team={true}
+                       power={[heroData.powerstats]}
                        id={heroData.docid}
                        setAgregar={setDelet}
                        image={heroData.image}
@@ -129,5 +136,6 @@ useEffect(()=>{
           }
                  </div>
         </div>
+        </>
     )
 }

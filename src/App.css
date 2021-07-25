@@ -66,11 +66,11 @@ li .link{
   display: none;
 }
 .login-cont{
-  padding-top: 5rem;
+  padding-top: 2rem;
   overflow-y: hidden;
   background: url("./img/bg.jpg");
   background-size: cover;
-  height: 40rem;
+  height: 100vh;
 }
 .form{
   border: 2px solid #0f0c29;
@@ -128,7 +128,6 @@ li .link{
   text-align:center;
 }
 .titles{
-  /*font-family: 'Marvel', sans-serif;*/
   font-family: 'Bebas Neue', cursive;
   font-size: 3.5rem;
   color:#fff;
@@ -136,6 +135,8 @@ li .link{
 .cont-title{
   background:#1e1e35d0;
   width:45rem;
+  margin-top: 2rem;
+  margin-left: -2rem;
   transform: rotate(102deg);
   height:100%; 
 }
@@ -316,7 +317,7 @@ li .link{
 .hero-return img{
   display:flex;
   margin: auto;
-  width: 350px;
+  width: 340px;
   height:auto;
   background: linear-gradient(to right, #EA384D, #D31027); 
   padding: 2rem;
@@ -387,6 +388,99 @@ li .link{
   border:none;
   float:right;
   margin: 20px; 
+  border-radius: 50%;
+}
+.powerstars{
+  display:grid;
+  grid-template-columns:auto auto;
+  position:relative;
+  z-index:-1;
+  padding-top:6rem;
+  padding-bottom:1rem;
+  margin-top:-5.3rem;
+  background: linear-gradient(to right, #EA384D, #D31027); 
+}
+.powerstars p{
+  border:none;
+  font-size:24px;
+  height:auto;
+  border-radius:0px;
+  padding:2px 0px;
+  background:none;
+  margin:0px;
+}
+.powerstars button{
+  margin-top: 15rem;
+  background: linear-gradient(to right, #636577, #64627c); 
+}
+
+/*DETALLE*/
+.detalle-card h3{
+  text-shadow: 8px 15px 8px #470b0bd0;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  font-family: 'Anton', sans-serif;
+  font-style: italic;
+}
+.detalle-card{
+  top: 5rem;
+  position: fixed;
+  z-index: 500;
+  height:100vh;
+  width: 100%;
+  background: linear-gradient(to right, #0d1131, #160a99,#0d1131); 
+}
+.detalle-card img{
+  height:60vh;
+  max-height: 100%;
+}
+.detalle-card {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  z-index: 1000;
+}
+.bio{
+  height:100%;
+  justify-content: center;
+  display:grid;
+  grid-template-columns: auto auto;
+}
+.bio div{
+  margin-top: 2vw;
+  padding: 10px 15px 0px 15px;
+}
+.detalle-hero {
+  text-align: center;
+  margin-top: 20px;
+}
+.bio p{
+  line-height: 25px;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  font-style: normal;
+  text-shadow: none;
+  font-size: 15px;
+}
+.biography .px{
+  padding: 0px;
+}
+.bio .title-det{
+  font-size: 25px;
+  padding-bottom: 15px;
+  text-shadow: -3px -1px 0px #9b0909;
+}
+.down-detalle{
+  color: #fff;
+  background:#8f1717;
+  font-size: 2rem;
+  padding: 10px 17px;
+  border:none;
+  position: absolute;
+  margin: 20px; 
+  right: -10px;
+  top: -0.8rem;
   border-radius: 50%;
 }
 @keyframes up{

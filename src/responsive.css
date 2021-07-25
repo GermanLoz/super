@@ -20,6 +20,17 @@
 .titles{
     font-size:2.5rem;
 }
+/*detalle*/
+.detalle-card{
+    top:0rem;
+    padding-bottom:4rem;
+    height:auto;
+    position: absolute;
+    grid-template-columns:auto;
+}
+.detalle-hero{
+    margin-top: 5rem;
+}
 }
 @media (max-width:600px){
 /*FORM*/
@@ -41,9 +52,8 @@
         margin-left: -3rem;    
     }
     .cont-title p{
-        margin-left: 9.5rem;
+        margin-left: 9.8rem;
         margin-top: 4rem;
-        margin-left: 8rem;
         width:40%;
     }
     .titles{
@@ -122,7 +132,7 @@ li {
 }
 @media (max-width:500px){
 .login-cont{
-    height:50rem;
+    height:100vh;
     background: url("./img/bg-movil.jpg");
 }
 .block{
@@ -135,26 +145,26 @@ li {
 }
 @media (max-width:400px){
     .cont-title{
-        transform: rotate(96deg);
-        height:15rem;
-        width:18rem;
-        margin-top:-0.3rem;
-        margin-left: 0rem;    
+        transform: rotate(100deg);
+        height:18rem;
+        width:150vh;
+        margin-top:5rem;
+        margin-left: -80vw;    
     }
     .cont-title p{
-        transform: rotate(-96deg);
-        margin-top: 2.4rem;
-        margin-left: 2rem;
-        width:70%;
+        transform: rotate(-100deg);
+        margin-top: 19vw;
+        margin-left: 18rem;
+        width:25%;
     }
     .titles{
         font-size:1.7rem;
     }
     .cont-title button{
-       transform: rotate(-96deg);
-        margin-top: 2.1rem;
-        left:50%;
-        margin-left: 20rem;
+       transform: rotate(-100deg);
+        margin-top: 30vw;
+        left:0%;
+        margin-left: 80vh;
     }
 .buscar{
     padding: 5px 15px;
@@ -165,13 +175,53 @@ li {
     margin-left: -110px;
     left: 50%;
 }
+/*DETALLE*/
+.bio{
+    height:auto;
+    padding: 0px;
+    width:100%;
+    grid-template-columns: 100%;
 }
-@media (max-width:330px){
+.bio p {
+    margin-left: 0px;
+    height:auto;
+}
+}
+@media (max-width:365px){
+.cont-title p{
+    margin-top: 5rem;
+}
+.cont-title button{
+    margin-top: 7rem;
+}
+.cont-title{
+    margin-top:5rem;
+    margin-left: -100%;    
+}
+}
+@media (max-width:331px){
 .team-inicio p{
     font-size: 4rem;
 }
 .hero-return img{
     width:250px;
+}
+/*DETALLE*/
+.bio p {
+    font-size: 1rem;
+}
+.detalle-card img{
+    height: 100vw;
+}
+}
+@media (max-width:365px){
+.cont-title{
+    margin-left: -100%;    
+}
+}
+@media (max-width:321px){
+.cont-title{
+    margin-left: -112%;    
 }
 }
 @media (max-width:290px){
