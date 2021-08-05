@@ -1,13 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState ,useEffect} from 'react'
 import Nav from './components/nav.jsx'
 import Login from './components/login.jsx'
-import Register from './components/register.jsx'
+import { useHistory } from 'react-router-dom';
+import useAuth from './components/hooks/useAuth'
+
 
 function Inicio() {
     let button = document.getElementById("reg")
+    const historial = useHistory()
+    const [style, setStyle] = useState('')
     const [mostrar, setMostrar] = useState('none')
-    const [mostrarReg, setMostrarReg] = useState('none')
     const [regis, setRegis] = useState(false)
+    const [user, setUser] = useState(false)
     const [cerrarReg, setCerrarReg] = useState(false)
 
     const cerrarLog = ()=>{
@@ -16,19 +20,35 @@ function Inicio() {
         }
         if(cerrarReg == true){
             setCerrarReg(false)
-            setMostrarReg('none')
            setRegis(false)
 
         }
     }
+    const auth = useAuth()
+    const login = (token) => {
+        auth.login(token, user.email)
+    }
+
+    useEffect(()=>{
+        if(user){
+            const data = user.data
+            let token
+            data ? 
+                token = data
+                : token = " "
+            if(token != " "){
+                setStyle('none')
+                historial.push('/SuperHero')
+                login(token)
+            } else {
+                historial.push('/')
+            }
+        }
+    },[user])
 
     if(regis == true){
         if(mostrar === 'block'){
            setMostrar('none')
-        }
-        if(mostrarReg === 'none'){
-           setMostrarReg('block')
-           setCerrarReg(true)
         }
     }
 
@@ -39,16 +59,13 @@ function Inicio() {
         }
     }
     return (
-        <div>
+        <div className={style}>
             <Fragment>
                 <Nav></Nav>
             </Fragment>
             <Fragment>
             <div className={mostrar}>
-                    <Login></Login>
-                </div>
-                <div className={mostrarReg}>
-                    <Register></Register>
+                    <Login setUser={setUser}></Login>
                 </div>
             </Fragment>
             <div className="login-cont" onClick={cerrarLog}>
@@ -69,4 +86,4 @@ function Inicio() {
     )
 }
 
-export default Inicio
+export default Inicio 

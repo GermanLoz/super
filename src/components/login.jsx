@@ -1,12 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {auth} from '../components/fire.js'
-import { useHistory } from 'react-router-dom';
+import Validate from './functions/validate.jsx'
 
+const Login = (Props)=>{
+  const {setUser} = Props
+  const [message,setMessage] = useState(``)
+  const [login, setLogin] = useState(null)
 
-const Login = ()=>{
-  const[message,setMessage] = useState(``)
-  const historial = useHistory()
+  useEffect(()=>{
+    if(login){
+      setUser(login)
+    }
+  }, [login])
+
 return( 
   <div>
      <Formik
@@ -22,23 +28,23 @@ return(
            errors.email = 'Invalid email address';
          }
          else if (
-          !/^[a-z]+[A-Z]+[1-9]{2,40}$/i.test(values.password)
+          !/^[a-z]+[A-Z]{2,40}$/i.test(values.password)
         ) {
             errors.password = 'La contraseña tiene que comenzar con letras y terminar con 2 numeros';
         }
          return errors;
        }}
-       onSubmit=
-       {(values, { setSubmitting }) => {
-         auth.signInWithEmailAndPassword(values.email,values.password)
+       onSubmit= {async function(values){
+        await Validate(values.email,values.password)
         .then( (e)=> {
-              historial.push('/SuperHero')
-              console.log(e)
+          if(e === "Error: Request failed with status code 401"){
+           setMessage("Error al iniciar session") 
+          }
+          const {data} = e
+            setLogin({email:values.email,data})
            })
          .catch((error)=>{
-           if(error.code == 'auth/wrong-password'){
-             setMessage(`Email or password incorrect`)
-            }
+           setMessage(error)
          })
        }
       }
@@ -58,10 +64,6 @@ return(
            <ErrorMessage className="error" name="password" component="div" />
            <button type="submit" className="button" onClick={isSubmitting}>
              Login
-           </button>
-           <p className="reg-tit">No tienes cuenta ?</p>
-           <button type="button" id ="reg" className="button" >
-             Register
            </button>
          </Form>
        )}

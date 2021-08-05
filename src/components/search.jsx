@@ -8,14 +8,20 @@ function Search(Props) {
     const  data = response.data
     const {results = []} = data
     const hero = results.map( results =>{  
-        const {name} = results
-        const {image} = results
-        const {id} = results
-      
-        return {name, image, id}
-    })
-    return hero
+      const {name} = results
+      const {image} = results
+      const {id} = results
+      const {appearance} = results
+      const {biography} = results
+      const {powerstats} = results
+  if(name != undefined && image != undefined && id != undefined){ 
+      return {name, biography ,appearance, image, powerstats , id}
+     } else {
+       return ''
+     }
   })
+  return hero
+})
    .catch( error =>{
     console.log(error);
     })

@@ -301,9 +301,15 @@ li .link{
   font-size: 22px;
   font-family: 'Bebas Neue', cursive;
 }
+.peso-altura{
+  position: absolute;
+  background:red;
+}
 .hero-return p{
   padding-top: 15px;
   text-align: center;
+  z-index: 2;
+  position: relative;
   font-size: 30px;
   font-family: 'Squada One', cursive;
   border-radius:0% 0% 5rem 0%;
@@ -368,22 +374,63 @@ li .link{
   color: #fff;
   background: linear-gradient(to top,#7d09b3, #8805f3, #7b0ee0); 
 }
-
+/*POWERS*/
+.cont-cardPowers{
+  position:absolute;
+  top: 0%;
+  width: 100%;
+  background: linear-gradient(to right, #0d1131, #160a99,#0d1131); 
+  height:490px;
+}
+.cont-cardPowers h3{
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 2px;
+  color: #fff;
+  margin-top: 1rem;
+}
+.cont-cardPowers canvas{
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 2rem;
+  background: #3f5c38;
+  background: #ffffffea;
+}
+.aling{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cont-powers{
+  width:100%;
+  position: absolute;
+  justify-content: center;
+}
+.cont-team-power{
+  width: 300px;
+  height:20px;
+}
 /*  MODAL   */
 .modal{
   animation-duration: 2s;
   animation-name: up;
   position: absolute;
-  top: 20%;
+  top:5rem;
   z-index:3;
   height:auto;
   background: linear-gradient(to right, #2a0845, #6441A5);
   width:100%;
 }
+#team-return{
+  margin-top: 32rem;
+}
 .down-modal{
   color: #fff;
+  position: relative;
   background:#8f1717;
   font-size: 2rem;
+  z-index: 2;
   padding: 10px 17px;
   border:none;
   float:right;
@@ -394,7 +441,6 @@ li .link{
   display:grid;
   grid-template-columns:auto auto;
   position:relative;
-  z-index:-1;
   padding-top:6rem;
   padding-bottom:1rem;
   margin-top:-5.3rem;

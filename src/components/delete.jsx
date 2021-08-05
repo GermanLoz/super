@@ -7,8 +7,7 @@ import 'firebase/firestore'
 
 export default async function Delet(Props) {
     const {id, setActualizar, user} = Props
-    console.log(user)
-    const card = id
+    const card = id.id
     if(card){ 
            await db.collection("hero").doc(card).delete()
         if(id){ 
@@ -19,7 +18,7 @@ export default async function Delet(Props) {
                        setActualizar(heroTeam)
                     }
             }
-            getTeam()
+           return  getTeam()
         }
     }
 }

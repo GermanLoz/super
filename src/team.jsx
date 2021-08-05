@@ -1,22 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import Nav from './components/nav.jsx'
 import Modal from './components/modal.jsx'
-import { auth } from './components/fire.js'
 import { db } from './components/firestore.js'
+import useAuth from './components/hooks/useAuth.jsx'
 
 export default function Team() {
     const[up, setUp] = useState(false)
     const[card, setCards] = useState([])
     const [userId, setUserId] = useState('')
     const [det, setDet] = useState('')
-    
+    const auth = useAuth()
+    const user = auth.user
+
     useEffect(()=>{
-        auth.onAuthStateChanged((user)=>{
-          if(user){
-            setUserId(user.email)
-          }
-        })
-      },[])
+            setUserId(user.username)
+      },[auth])
 
       useEffect(()=>{
         if(det.length > 0){
@@ -113,6 +111,8 @@ export default function Team() {
             }
             </div>
               <div>
+              <div className="cont-powers">
+                </div>
                  <Modal setDet={setDet} setCards={setCards} estado={up} setUp={setUp} card={card} deletId={card.id} user={userId}/>
               </div>
         </div>

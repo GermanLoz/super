@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Formik } from 'formik';
 
 export default function ResultHero(Props) {
@@ -14,7 +14,7 @@ const {setSearch} = Props
               }
               return errors;
             }}
-        onSubmit={(values, actions) => {
+        onSubmit={(values) => {
               setSearch(values.name)
         }}
       >

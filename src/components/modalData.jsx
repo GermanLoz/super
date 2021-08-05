@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import Axios from 'axios'
 
 function ModalData(Props) {
@@ -7,7 +7,6 @@ function ModalData(Props) {
         .then(response => {
           const {data} = response
           const results = [data]
-          console.log(results);
           const hero = results.map( results =>{  
               const {name} = results
               const {image} = results

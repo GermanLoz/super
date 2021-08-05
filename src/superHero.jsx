@@ -1,13 +1,11 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './components/nav.jsx'
 import Search from './components/search.jsx'
 import ResultHero from './components/resultHero.jsx'
 import Card from './components/card.jsx'
-import { auth } from './components/fire.js'
 import Database from './services/database.jsx'
-
-
-
+import useAuth from './components/hooks/useAuth.jsx'
+import myTeam from './components/heroData/myTeam.jsx'
 
 function SuperHero() {
     const [clase, setClase] = useState('none')
@@ -18,17 +16,16 @@ function SuperHero() {
     const [userId, setUserId] = useState('')
     const [message, setMesagge] = useState('')
     const [messageClass, setMesaggeClass] = useState('none')
-    useEffect(()=>{
-        auth.onAuthStateChanged((user)=>{
-          if(user){
-            setUserId(user.email) 
-          }
-        })
-      },[])
+    const auth = useAuth()
+    const user = auth.user
 
-const alerta = ()=>{
-  setMesagge('successfully added')
-  setMesaggeClass('message')
+    useEffect(()=>{
+      setUserId(user.username)
+    },[auth])
+
+const alerta = (color, mensaje)=>{
+  setMesagge(`${mensaje}`)
+  setMesaggeClass(color)
    setTimeout((e)=>{
     setMesagge('')
     setMesaggeClass('')
@@ -36,10 +33,17 @@ const alerta = ()=>{
 }
 
 useEffect(()=>{
-        Database(userId, id)
-        if(id.length != 0 ){ 
-        alerta()
-        }
+      if(id){ 
+          myTeam({user:user.username, alignment:id.alignment})
+          .then( response => {
+          if(response == false){
+                alerta('error', 'se permiten 6 heroes y 3 malos/buenos')
+           } else {
+                alerta('message', 'Heroe agregado')
+                Database(userId, id.alignment, id.id)
+           } 
+        })
+      }
 },[id])
 
     const searchNone = ()=>{
@@ -55,6 +59,8 @@ useEffect(()=>{
              setHero(hero)
          )
      },[keyword])
+
+
     return (
         <>
           <Nav/>
@@ -77,7 +83,11 @@ useEffect(()=>{
           {
             hero ?
             hero.map( hero =>{
-               return <Card 
+               return <Card
+                       biography={hero.biography}
+                       appearance={hero.appearance}
+                       power={[hero.powerstats]}
+                       alignment = {hero.alignment}
                        id={hero.id}
                        setAgregar={setAgregar}
                        image={hero.image}

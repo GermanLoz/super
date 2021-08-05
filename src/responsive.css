@@ -131,6 +131,11 @@ li {
 }
 }
 @media (max-width:500px){
+.cont-team-power{
+    width: 250px;
+    margin-top: 1.5rem;
+    height: auto;
+}
 .login-cont{
     height:100vh;
     background: url("./img/bg-movil.jpg");
@@ -225,6 +230,9 @@ li {
 }
 }
 @media (max-width:290px){
+.cont-team-power{
+    width: 200px;
+}
 .hero-return img{
     width: 240px;
 }

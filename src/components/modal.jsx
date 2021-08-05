@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react'
 import ModalData from './modalData.jsx'
 import Card from './card.jsx'
 import Delet from './delete'
+import margeSort from './modalFunction/margeSort.jsx'
+import totalPowers from './functions/totalPowers.jsx'
+import CardPowers from './cardPowers.jsx'
 
-export default function Modal(Props) {
+function Modal(Props) {
     const{estado, setUp, card, user, setDet} = Props
     const[styleModal, setStyleModal] = useState('none')
     const [ides, setIdes] = useState([])
@@ -16,91 +19,92 @@ export default function Modal(Props) {
     const [actualizarId, setIdActulizar] = useState([])
     const [dataDetalle, setDataDetalle] = useState([])
     const [dataAcutlizada, setDataActulizada] = useState([])
-    console.log(heroData)
+    const data = margeSort({obj:heroData, largo:heroData.length})
+    const total = totalPowers(data)
 
-    if(estado == true && styleModal ==='none'){
+    if(estado === true && styleModal ==='none'){
         setStyleModal('modal')
     }
-    if(estado == false && styleModal == 'modal'){
+    if(estado === false && styleModal === 'modal'){
         setStyleModal('none')
     }
 
-const alerta = ()=>{
-    setMesagge('successfully added')
-    setMesaggeClass('message')
-    setTimeout((e)=>{
-    setMesagge('')
-    setMesaggeClass('')
-    },1000)
-}
+    const alerta = ()=>{
+        setMesagge('successfully added')
+        setMesaggeClass('message')
+        setTimeout((e)=>{
+        setMesagge('')
+        setMesaggeClass('')
+        },1000)
+    }
 
-useEffect(()=>{
-    setHeroData([])
-    const idesAct = actualizar.map( item => {
-    const {heroId} = item
-    const {id} = item
-    return {heroId, id}
-})
-
-if(idesAct){ 
-    setIdActulizar([...idesAct])
-}
-},[actualizar])
-
-useEffect(()=>{
-    if(actualizarId.length != 0){ 
-        actualizarId.map(item =>(
-        ModalData({item:item.heroId, docid:item.id})  
-        .then(res =>(
-            setDataActulizada(res, ...dataAcutlizada )
-                ))
-            ))
-        }
-},[actualizarId])
-
-useEffect(()=>{
-    setHeroData([...dataAcutlizada, ...heroData])
-},[dataAcutlizada])
-
-//Component delete superHero
-useEffect(()=>{
-    Delet({id:delet, setActualizar:setActualizar, user:user})
-    if(delet.length != 0 ){ 
-        alerta()
-        }
-},[delet])
-//Agregar super heroes en array
     useEffect(()=>{
+        setHeroData([])
+        const idesAct = actualizar.map( item => {
+        const {heroId} = item
+        const {id} = item
+        return {heroId, id}
+    })
+
+    if(idesAct){ 
+        setIdActulizar([...idesAct])
+    }
+    },[actualizar])
+
+    useEffect(()=>{
+        if(actualizarId.length !== 0){ 
+            actualizarId.map(item =>(
+            ModalData({item:item.heroId, docid:item.id})  
+            .then(res =>(
+                setDataActulizada(res, ...dataAcutlizada )
+                    ))
+                ))
+            }
+    },[actualizarId])
+
+    useEffect(()=>{
+        setHeroData([...dataAcutlizada, ...heroData])
+    },[dataAcutlizada])
+
+    //Component delete superHero
+    useEffect(()=>{
+        Delet({id:delet, setActualizar:setActualizar, user:user})
+        if(delet.length !== 0 ){ 
+            alerta()
+            }
+    },[delet])
+//Agregar super heroes en array
+    useEffect(() => {
         setHeroData([response, ...heroData])
     },[response])
-
-//setear ides en array
-useEffect(()=>{
-    const idesHero = card.map( item => {
-    const {heroId} = item
-    const {id} = item
-    return {heroId, id}
-})
-if(idesHero){
-    setIdes(...ides,idesHero)
-    }
-},[card])
-
-useEffect(()=>{
-    if(ides){ 
-        ides.map(item =>(
-        ModalData({item:item.heroId, docid:item.id})  
-        .then(res =>(
-            setResponse(...res)           
-                ))
-            ))
+    //setear ides en array
+    useEffect(()=>{
+        const idesHero = card.map( item => {
+        const {heroId} = item
+        const {id} = item
+        return {heroId, id}
+    })
+    if(idesHero){
+        setIdes(...ides,idesHero)
         }
-},[ides])
+    },[card])
 
-useEffect(()=>{
-    setDet(dataDetalle)
-},[dataDetalle])
+    useEffect(()=>{
+        if(ides){ 
+            ides.map(item =>{ 
+            ModalData({item:item.heroId, docid:item.id})  
+            .then(res =>{
+                if(res){
+                    setResponse(...res)
+                    }           
+                })
+              })
+            }
+    },[ides])
 
+    useEffect(()=>{
+        setDet(dataDetalle)
+    },[dataDetalle])
 
     return (
         <>
@@ -111,13 +115,20 @@ useEffect(()=>{
                 className="down-modal">
                 <i class="fas fa-times"></i>
             </button>
-            <div className="return-busqueda">
+
+            <div className="return-busqueda" id="team-return">
+                    {
+                    total ?
+                        <CardPowers powers = {total}/>
+                          : " "
+                    }
             {
             heroData ?
-            heroData.map( heroData =>{
+            heroData.map( heroData => {
                 if(Array.isArray(heroData)){
                     return " "
-                }else{ 
+            } else {
+                if(heroData){
                return <Card
                        setDataDetalle={setDataDetalle}
                        biography={heroData.biography}
@@ -130,7 +141,8 @@ useEffect(()=>{
                        text={'Delete'}
                        name={heroData.name}
                     />
-                }
+                    }
+                } 
               })
                 : ''
           }
@@ -139,3 +151,4 @@ useEffect(()=>{
         </>
     )
 }
+export default React.memo(Modal)
